@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./styles/register.css";
 import {
   validateUsername,
   validateEmail,
@@ -90,104 +91,84 @@ export const Register = ({ switchAuthHandler }) => {
   );
 
   return (
-    <div className="container-fluid vh-100 d-flex align-items-center justify-content-center p-0"
-         style={{ backgroundImage: 'url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjM2Ny1iaW5uLTM0LWphcGFuZXNlcGF0dGVybl8yLmpwZw.jpg)', 
-                 backgroundSize: 'cover', 
-                 backgroundPosition: 'center', 
-                 backgroundRepeat: 'no-repeat' }}>
-      <div className="col-12 col-md-8 col-lg-6">
-        <div className="card shadow p-4 bg-dark text-light border-0">
-          <h3 className="text-center mb-4">Create Account</h3>
+    <div className="register-page-wrapper">
+      <div className="register-card">
+        <div className="register-panel-left">
+          <h2>Hola, Bienvenido!</h2>
+          <p className="text-center">Si ya tienes una cuenta puedes inicar sesión aquí</p>
+          <button className="btn btn-outline-light mt-3" onClick={switchAuthHandler}>Log in</button>
+        </div>
+
+        <div className="register-panel-right">
+          <h3 className="text-center mb-4">Crea una cuenta</h3>
           <form onSubmit={handleRegister}>
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label">First Name</label>
                 <input
                   type="text"
                   className={`form-control ${formState.name.showError ? "is-invalid" : ""}`}
+                  placeholder="First Name"
                   value={formState.name.value}
                   onChange={(e) => handleInputValueChange(e.target.value, "name")}
                   onBlur={(e) => handleInputValidationOnBlur(e.target.value, "name")}
                 />
-                {formState.name.showError && (
-                  <div className="invalid-feedback">First name is required.</div>
-                )}
+                {formState.name.showError && <div className="invalid-feedback">First name is required.</div>}
               </div>
-
               <div className="col-md-6 mb-3">
-                <label className="form-label">Last Name</label>
                 <input
                   type="text"
                   className={`form-control ${formState.surname.showError ? "is-invalid" : ""}`}
+                  placeholder="Last Name"
                   value={formState.surname.value}
                   onChange={(e) => handleInputValueChange(e.target.value, "surname")}
                   onBlur={(e) => handleInputValidationOnBlur(e.target.value, "surname")}
                 />
-                {formState.surname.showError && (
-                  <div className="invalid-feedback">Last name is required.</div>
-                )}
+                {formState.surname.showError && <div className="invalid-feedback">Last name is required.</div>}
               </div>
             </div>
 
-            <div className="mb-3">
-              <label className="form-label">Email</label>
-              <input
-                type="email"
-                className={`form-control ${formState.email.showError ? "is-invalid" : ""}`}
-                value={formState.email.value}
-                onChange={(e) => handleInputValueChange(e.target.value, "email")}
-                onBlur={(e) => handleInputValidationOnBlur(e.target.value, "email")}
-                placeholder="name@example.com"
-              />
-              {formState.email.showError && (
-                <div className="invalid-feedback">{emailValidationMessage}</div>
-              )}
-            </div>
+            <input
+              type="text"
+              className={`form-control mb-3 ${formState.username.showError ? "is-invalid" : ""}`}
+              placeholder="Username"
+              value={formState.username.value}
+              onChange={(e) => handleInputValueChange(e.target.value, "username")}
+              onBlur={(e) => handleInputValidationOnBlur(e.target.value, "username")}
+            />
+            {formState.username.showError && <div className="invalid-feedback">{validateUsernameMessage}</div>}
 
-            <div className="mb-3">
-              <label className="form-label">Username</label>
-              <input
-                type="text"
-                className={`form-control ${formState.username.showError ? "is-invalid" : ""}`}
-                value={formState.username.value}
-                onChange={(e) => handleInputValueChange(e.target.value, "username")}
-                onBlur={(e) => handleInputValidationOnBlur(e.target.value, "username")}
-              />
-              {formState.username.showError && (
-                <div className="invalid-feedback">{validateUsernameMessage}</div>
-              )}
-            </div>
+            <input
+              type="email"
+              className={`form-control mb-3 ${formState.email.showError ? "is-invalid" : ""}`}
+              placeholder="Email"
+              value={formState.email.value}
+              onChange={(e) => handleInputValueChange(e.target.value, "email")}
+              onBlur={(e) => handleInputValidationOnBlur(e.target.value, "email")}
+            />
+            {formState.email.showError && <div className="invalid-feedback">{emailValidationMessage}</div>}
 
-            <div className="mb-3">
-              <label className="form-label">Password</label>
-              <input
-                type="password"
-                className={`form-control ${formState.password.showError ? "is-invalid" : ""}`}
-                value={formState.password.value}
-                onChange={(e) => handleInputValueChange(e.target.value, "password")}
-                onBlur={(e) => handleInputValidationOnBlur(e.target.value, "password")}
-              />
-              {formState.password.showError && (
-                <div className="invalid-feedback">{validatePasswordMessage}</div>
-              )}
-            </div>
+            <input
+              type="password"
+              className={`form-control mb-3 ${formState.password.showError ? "is-invalid" : ""}`}
+              placeholder="Password"
+              value={formState.password.value}
+              onChange={(e) => handleInputValueChange(e.target.value, "password")}
+              onBlur={(e) => handleInputValidationOnBlur(e.target.value, "password")}
+            />
+            {formState.password.showError && <div className="invalid-feedback">{validatePasswordMessage}</div>}
 
-            <div className="mb-4">
-              <label className="form-label">Confirm Password</label>
-              <input
-                type="password"
-                className={`form-control ${formState.passwordConfir.showError ? "is-invalid" : ""}`}
-                value={formState.passwordConfir.value}
-                onChange={(e) => handleInputValueChange(e.target.value, "passwordConfir")}
-                onBlur={(e) => handleInputValidationOnBlur(e.target.value, "passwordConfir")}
-              />
-              {formState.passwordConfir.showError && (
-                <div className="invalid-feedback">{passwordConfirmationMessage}</div>
-              )}
-            </div>
+            <input
+              type="password"
+              className={`form-control mb-3 ${formState.passwordConfir.showError ? "is-invalid" : ""}`}
+              placeholder="Confirm Password"
+              value={formState.passwordConfir.value}
+              onChange={(e) => handleInputValueChange(e.target.value, "passwordConfir")}
+              onBlur={(e) => handleInputValidationOnBlur(e.target.value, "passwordConfir")}
+            />
+            {formState.passwordConfir.showError && <div className="invalid-feedback">{passwordConfirmationMessage}</div>}
 
-            <div className="d-grid">
-              <button type="submit" className="btn btn-success" disabled={isDisabled}>
+            <div className="d-grid mt-4">
+              <button type="submit" className="btn btn-primary" disabled={isDisabled}>
                 Register
               </button>
             </div>
@@ -197,17 +178,6 @@ export const Register = ({ switchAuthHandler }) => {
                 {formState.successMessage}
               </div>
             )}
-
-            <div className="text-center mt-3">
-              <span className="text-muted">Already have an account?</span>{" "}
-              <button
-                type="button"
-                className="btn btn-link p-0 small"
-                onClick={switchAuthHandler}
-              >
-                Log in
-              </button>
-            </div>
           </form>
         </div>
       </div>
