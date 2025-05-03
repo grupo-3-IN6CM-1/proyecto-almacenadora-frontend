@@ -21,7 +21,8 @@ export const Register = ({ switchAuthHandler }) => {
     surname: { value: "", isValid: false, showError: false },
     password: { value: "", isValid: false, showError: false },
     passwordConfir: { value: "", isValid: false, showError: false },
-    successMessage: ""
+    successMessage: "",
+    errorMessage: ""
   });
 
   const handleInputValueChange = (value, field) => {
@@ -74,16 +75,30 @@ export const Register = ({ switchAuthHandler }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData)
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Error en el servidor');
+        }
+        return res.json();
+      })
       .then(data => {
         if (data.success) {
           setFormState(prev => ({ ...prev, successMessage: "Registration successful!" }));
           setTimeout(() => navigate("/login"), 2000);
         } else {
-          console.error(data.msg);
+          setFormState(prev => ({
+            ...prev,
+            errorMessage: data.msg || "An error occurred. Please try again."
+          }));
         }
       })
-      .catch(console.error);
+      .catch(err => {
+        setFormState(prev => ({
+          ...prev,
+          errorMessage: "Network error, please try again later."
+        }));
+        console.error(err);
+      });
   };
 
   const isDisabled = !Object.values(formState).every(
@@ -95,7 +110,7 @@ export const Register = ({ switchAuthHandler }) => {
       <div className="register-card">
         <div className="register-panel-left">
           <h2>Hola, Bienvenido!</h2>
-          <p className="text-center">Si ya tienes una cuenta puedes inicar sesión aquí</p>
+          <p className="text-center">Si ya tienes una cuenta puedes iniciar sesión aquí</p>
           <button className="btn btn-outline-light mt-3" onClick={switchAuthHandler}>Log in</button>
         </div>
 
@@ -176,6 +191,12 @@ export const Register = ({ switchAuthHandler }) => {
             {formState.successMessage && (
               <div className="alert alert-success mt-3 text-center">
                 {formState.successMessage}
+              </div>
+            )}
+
+            {formState.errorMessage && (
+              <div className="alert alert-danger mt-3 text-center">
+                {formState.errorMessage}
               </div>
             )}
           </form>
