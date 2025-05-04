@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Asegúrate de importar useNavigate
 import { useLogin } from '../shared/hooks';
 import {
     emailValidationMessage,
@@ -10,46 +9,33 @@ import {
 import "./styles/login.css";
 
 export const Login = ({ switchAuthHandler }) => {
-    const navigate = useNavigate(); // Hook para redirigir
     const { login, isLoading } = useLogin();
-
     const [formState, setFormState] = useState({
-        email: { value: '', isValid: false, showError: false },
-        password: { value: '', isValid: false, showError: false }
+      email: { value: "", isValid: false, showError: false },
+      password: { value: "", isValid: false, showError: false },
     });
-
+  
     const handleInputValueChange = (value, field) => {
-        setFormState((prevState) => ({
-            ...prevState,
-            [field]: { ...prevState[field], value }
-        }));
+      setFormState((prev) => ({ ...prev, [field]: { ...prev[field], value } }));
     };
-
+  
     const handleInputValidationOnBlur = (value, field) => {
-        let isValid = false;
-        if (field === 'email') isValid = validateEmail(value);
-        if (field === 'password') isValid = validatePassword(value);
-
-        setFormState((prevState) => ({
-            ...prevState,
-            [field]: { ...prevState[field], isValid, showError: !isValid }
-        }));
+      const isValid = field === "email" ? validateEmail(value) : validatePassword(value);
+      setFormState((prev) => ({
+        ...prev,
+        [field]: { ...prev[field], isValid, showError: !isValid },
+      }));
     };
-
-    const handleLogin = (event) => {
-        event.preventDefault();
-        login(formState.email.value, formState.password.value)
-            .then(() => {
-                // Si el login es exitoso, redirige al Dashboard
-                navigate("/dashboard"); // Redirige a la ruta del Dashboard
-            })
-            .catch((error) => {
-                // Maneja cualquier error durante el login
-                console.error(error);
-            });
+  
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      try {
+        await login(formState.email.value, formState.password.value);
+      } catch {}
     };
-
-    const isSubmitButtonDisable = isLoading || !formState.email.isValid || !formState.password.isValid;
+  
+    const isSubmitButtonDisable =
+      isLoading || !formState.email.isValid || !formState.password.isValid;
 
     return (
         <div className="login-page-wrapper">
