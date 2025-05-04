@@ -1,0 +1,66 @@
+/* navbar.css */
+
+/* Barra de navegación */
+.navbar {
+  padding: 15px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-nav .nav-item .nav-link {
+  padding: 10px 15px;
+}
+
+.navbar-toggler {
+  background-color: #333;
+  border: none;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #343a40;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar-open {
+  left: 0;
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: white;
+  border: none;
+  background: transparent;
+}
+
+.sidebar-links {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 50px;
+}
+
+.sidebar-links li {
+  margin: 20px 0;
+}
+
+.sidebar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  display: block;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-links li a:hover {
+  background-color: #495057;
+}

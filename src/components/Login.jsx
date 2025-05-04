@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Asegúrate de importar useNavigate
 import { useLogin } from '../shared/hooks';
 import {
     emailValidationMessage,
@@ -9,6 +10,7 @@ import {
 import "./styles/login.css";
 
 export const Login = ({ switchAuthHandler }) => {
+    const navigate = useNavigate(); // Hook para redirigir
     const { login, isLoading } = useLogin();
 
     const [formState, setFormState] = useState({
@@ -36,7 +38,15 @@ export const Login = ({ switchAuthHandler }) => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        login(formState.email.value, formState.password.value);
+        login(formState.email.value, formState.password.value)
+            .then(() => {
+                // Si el login es exitoso, redirige al Dashboard
+                navigate("/dashboard"); // Redirige a la ruta del Dashboard
+            })
+            .catch((error) => {
+                // Maneja cualquier error durante el login
+                console.error(error);
+            });
     };
 
     const isSubmitButtonDisable = isLoading || !formState.email.isValid || !formState.password.isValid;

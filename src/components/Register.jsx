@@ -2,15 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/register.css";
 import {
-  validateUsername,
-  validateEmail,
   validatePassword,
   validateConfirPassword,
   emailValidationMessage,
-  validateUsernameMessage,
   validatePasswordMessage,
   passwordConfirmationMessage
 } from "../shared/validators";
+import { isValidEmail, isValidUsername, validateExistEmailMessage, validateExistUsernameMessage } from "../shared/validators/auth/authValidator.jsx";
 
 export const Register = ({ switchAuthHandler }) => {
   const navigate = useNavigate();
@@ -21,7 +19,10 @@ export const Register = ({ switchAuthHandler }) => {
     surname: { value: "", isValid: false, showError: false },
     password: { value: "", isValid: false, showError: false },
     passwordConfir: { value: "", isValid: false, showError: false },
-    successMessage: ""
+    successMessage: "",
+    errorMessage: "",
+    emailExists: false,
+    usernameExists: false
   });
 
   const handleInputValueChange = (value, field) => {
@@ -29,16 +30,30 @@ export const Register = ({ switchAuthHandler }) => {
       ...prev,
       [field]: { ...prev[field], value }
     }));
+
+    if (field === "email") {
+      const isValid = isValidEmail(value);
+      setFormState(prev => ({
+        ...prev,
+        email: { ...prev.email, isValid, showError: !isValid }
+      }));
+    } else if (field === "username") {
+      const isValid = isValidUsername(value);
+      setFormState(prev => ({
+        ...prev,
+        username: { ...prev.username, isValid, showError: !isValid }
+      }));
+    }
   };
 
   const handleInputValidationOnBlur = (value, field) => {
     let isValid = false;
     switch (field) {
       case "email":
-        isValid = validateEmail(value);
+        isValid = isValidEmail(value);
         break;
       case "username":
-        isValid = validateUsername(value);
+        isValid = isValidUsername(value);
         break;
       case "name":
       case "surname":
@@ -77,13 +92,23 @@ export const Register = ({ switchAuthHandler }) => {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          setFormState(prev => ({ ...prev, successMessage: "Registration successful!" }));
-          setTimeout(() => navigate("/login"), 2000);
+          setFormState(prev => ({ ...prev, successMessage: "Registration successful!", errorMessage: "" }));
+          setTimeout(() => navigate("/"), 2000); // Redirige a la página de bienvenida
         } else {
-          console.error(data.msg);
+          setFormState(prev => ({
+            ...prev,
+            successMessage: "",
+            errorMessage: data.msg || "Hubo un error al registrar el usuario."
+          }));
         }
       })
-      .catch(console.error);
+      .catch(error => {
+        setFormState(prev => ({
+          ...prev,
+          successMessage: "",
+          errorMessage: "Error en la conexión. Intenta nuevamente."
+        }));
+      });
   };
 
   const isDisabled = !Object.values(formState).every(
@@ -129,23 +154,25 @@ export const Register = ({ switchAuthHandler }) => {
 
             <input
               type="text"
-              className={`form-control mb-3 ${formState.username.showError ? "is-invalid" : ""}`}
+              className={`form-control mb-3 ${formState.username.showError || formState.usernameExists ? "is-invalid" : ""}`}
               placeholder="Username"
               value={formState.username.value}
               onChange={(e) => handleInputValueChange(e.target.value, "username")}
               onBlur={(e) => handleInputValidationOnBlur(e.target.value, "username")}
             />
-            {formState.username.showError && <div className="invalid-feedback">{validateUsernameMessage}</div>}
+            {formState.username.showError && <div className="invalid-feedback">Username is invalid (3-20 characters, alphanumeric or underscore).</div>}
+            {formState.usernameExists && <div className="invalid-feedback">{validateExistUsernameMessage}</div>}
 
             <input
               type="email"
-              className={`form-control mb-3 ${formState.email.showError ? "is-invalid" : ""}`}
+              className={`form-control mb-3 ${formState.email.showError || formState.emailExists ? "is-invalid" : ""}`}
               placeholder="Email"
               value={formState.email.value}
               onChange={(e) => handleInputValueChange(e.target.value, "email")}
               onBlur={(e) => handleInputValidationOnBlur(e.target.value, "email")}
             />
             {formState.email.showError && <div className="invalid-feedback">{emailValidationMessage}</div>}
+            {formState.emailExists && <div className="invalid-feedback">{validateExistEmailMessage}</div>}
 
             <input
               type="password"
@@ -168,7 +195,7 @@ export const Register = ({ switchAuthHandler }) => {
             {formState.passwordConfir.showError && <div className="invalid-feedback">{passwordConfirmationMessage}</div>}
 
             <div className="d-grid mt-4">
-              <button type="submit" className="btn btn-primary" disabled={isDisabled}>
+              <button type="submit" className="btn btn-primary" disabled={isDisabled || formState.usernameExists || formState.emailExists}>
                 Register
               </button>
             </div>
@@ -176,6 +203,12 @@ export const Register = ({ switchAuthHandler }) => {
             {formState.successMessage && (
               <div className="alert alert-success mt-3 text-center">
                 {formState.successMessage}
+              </div>
+            )}
+
+            {formState.errorMessage && (
+              <div className="alert alert-danger mt-3 text-center">
+                {formState.errorMessage}
               </div>
             )}
           </form>

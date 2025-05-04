@@ -1,2 +1,2 @@
 >[!IMPORTANT]
-Terminar vista de dashboard y elaborar un navbar
+Se cambiaron algunas rutas y se diseñó la estructura del dashboard.
