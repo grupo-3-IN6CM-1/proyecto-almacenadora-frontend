@@ -1,0 +1,63 @@
+.stats-page-container {
+    padding: 2rem;
+    background-color: #f9fafb;
+    font-family: 'Inter', sans-serif;
+    color: #1f2937;
+  }
+  
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .chart-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }  
+  
+  .chart-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    color: #111827;
+  }
+  
+  .recharts-cartesian-grid line {
+    stroke: #e5e7eb;
+    stroke-dasharray: 3 3;
+  }
+  
+  .recharts-cartesian-axis-tick-value {
+    fill: #4b5563;
+    font-size: 0.875rem;
+  }
+  
+  .recharts-tooltip-wrapper {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  
+  .recharts-tooltip-item {
+    margin: 0.25rem 0;
+  }
+  
+  .recharts-legend-item-text {
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
