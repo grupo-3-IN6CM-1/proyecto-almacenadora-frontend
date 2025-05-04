@@ -1,87 +1,41 @@
-container{
-    align-items: center;
-}
-
-.welcome-card {
-    text-align: center;
-    background-color: transparent; /* Fondo transparente */
-    padding: 50px;
-    border-radius: 10px;
-    color: black; /* Texto negro */
-    max-width: 450px;
-    width: 100%;
-    animation: slideUp 1s ease-out;
-    
+.container {
+  margin: 2rem auto;
+  text-align: center;
 }
 
 .welcome-heading {
-    text-align: center;
-    background-color: white; /* Sin color de fondo */
-    padding: 50px;
-    border-radius: 10px;
-    color: rgb(0, 0, 0); /* Texto negro */
-    max-width: 450px;
-    width: 100%;
-    animation: slideUp 1s ease-out;
-    margin-bottom: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.dashboard-content-container {
-    position: relative;
-    z-index: 1;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 20px;
-    width: 90%;
-    max-width: 1300px;
-    background-color: transparent;
-    color: white;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.dashboard-body {
+  padding: 1rem;
 }
 
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    padding: 20px;
-    max-width: 100%;
-    margin-top: 20px;
-    margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
 .dashboard-card {
-    margin: 10px;
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    box-shadow: 0 4px 6px rgba(251, 0, 0, 0.1);
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .dashboard-card:hover {
-    transform: scale(1.05);
+  transform: translateY(-5px);
 }
 
+
 .dashboard-card .btn {
-    background-color: #000000;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
+  background-color: #000000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .dashboard-card .btn:hover {
-    background-color: #074a7c;
+  background-color: #074a7c;
 }

@@ -1,10 +1,12 @@
 import { useUserDetails } from "../../shared/hooks";
 import { Navbar } from "../../components/navbars/Navbar";
 import { Card, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "../dashboard/dashboardPage.css";
 
 export const DashboardPage = () => {
   const { username } = useUserDetails();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -97,7 +99,11 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Kardex</Card.Title>
                 <Card.Text>Gestión del Kardex de inventarios</Card.Text>
-                <Button variant="primary">Ver Kardex</Button>
+                <Button variant="primary"
+                onClick={() => navigate("/kardex")}
+                >
+                  Ver Kardex 
+                </Button>
               </Card.Body>
             </Card>
           </div>

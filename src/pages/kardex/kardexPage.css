@@ -1,0 +1,25 @@
+.entries-table {
+    width: 100%;
+  }
+  
+  .exit-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+  }
+  
+  .exit-card {
+    width: 100%;    
+    max-width: none;  
+  }
+  
+  .form-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .report-btn {
+    margin-left: auto;
+  }
+  

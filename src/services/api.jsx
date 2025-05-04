@@ -26,3 +26,14 @@ export const register = async(data) => {
         }
     }
 }
+
+export const kardex = async (data) => {
+    try {
+        return await apiClient.get('/kardex', data)
+    } catch (e) {
+        return{
+            error: true,
+            e
+        }
+    }
+}
