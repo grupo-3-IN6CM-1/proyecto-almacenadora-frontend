@@ -1,3 +1,4 @@
+export * from './validateStockProduct.jsx'
 export * from './validateAvatarUrl.jsx';
 export * from './validateEmail.jsx';
 export * from './validatePassword.jsx';

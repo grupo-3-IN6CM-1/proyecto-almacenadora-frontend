@@ -1,2 +1,2 @@
 >[!IMPORTANT]
-Se cambiaron algunas rutas y se diseñó la estructura del dashboard.
+Se agregaron funciones para la generación y visualización de entradas y salidas para productos y validaciones

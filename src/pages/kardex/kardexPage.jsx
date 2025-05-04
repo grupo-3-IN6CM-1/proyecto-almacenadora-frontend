@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useUserDetails } from '../../shared/hooks';
 import { Navbar } from '../../components/navbars/Navbar';
-import { validateStock } from '../../shared/validators/validateStockProduct';
+import { validateStock } from '../../shared/validators/';
 import '../kardex/kardexPage.css';
 
 export const KardexPage = () => {
@@ -115,7 +115,7 @@ export const KardexPage = () => {
             </thead>
             <tbody>
               {entries.map(entry => (
-                <tr key={entry.id} onClick={() => navigate(`/kardex/${entry.id}`)} className="entry-row">
+                <tr>
                   <td>{entry.product?.name || '-'}</td>
                   <td>{new Date(entry.date).toLocaleDateString()}</td>
                   <td>{entry.quantity}</td>
