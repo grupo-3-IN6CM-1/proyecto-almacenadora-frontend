@@ -85,9 +85,9 @@ export const DashboardPage = () => {
                 src="https://www.hotelogix.com/images/Tomardecisionesbasadasendatos.png"
               />
               <Card.Body>
-                <Card.Title>Reportes</Card.Title>
-                <Card.Text>Información sobre reportes de productos como entradas y salidas.</Card.Text>
-                <Button variant="primary">Ver Reportes</Button>
+                <Card.Title>Reportes y estadísticas</Card.Title>
+                <Card.Text>Información sobre inventario de productos y estadísticas.</Card.Text>
+                <Button variant="primary">Ver Más</Button>
               </Card.Body>
             </Card>
 
