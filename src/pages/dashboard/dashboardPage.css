@@ -3,13 +3,19 @@
   text-align: center;
 }
 
-.welcome-heading {
-  font-size: 1.5rem;
+.welcome-container {
+  padding-top: 2rem; /* solo arriba */
+  padding-bottom: 0;
+  text-align: center;
   font-weight: bold;
 }
 
+
 .dashboard-body {
-  padding: 1rem;
+  padding-top: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
 }
 
 .card-container {

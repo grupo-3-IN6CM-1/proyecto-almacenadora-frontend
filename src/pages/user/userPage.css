@@ -1,0 +1,53 @@
+  .container {
+    min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+    padding: 20px;
+  }
+  
+  h2 {
+    color: white; /* Título de la sección "Usuarios Activos" en blanco */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para las tarjetas */
+    border-radius: 8px;
+    background-color: #fff; /* Fondo blanco para las tarjetas */
+  }
+  
+  .user-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; /* Estilo para ajustar la imagen */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  button, .btn-outline-dark {
+    border-color: #6c757d; /* Borde oscuro */
+    color: #6c757d; /* Color del texto */
+    background-color: transparent; /* Fondo transparente */
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  
+  button:hover, .btn-outline-dark:hover {
+    background-color: #6c757d; /* Fondo oscuro cuando se pasa el cursor */
+    color: white; /* Texto blanco cuando se pasa el cursor */
+  }
+  

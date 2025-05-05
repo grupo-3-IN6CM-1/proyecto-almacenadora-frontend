@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSuppliers } from '../../shared/hooks';
-import toast from 'react-hot-toast';
 import './SuppliersPage.css';
+import {Navbar} from '../../components/navbars/Navbar.jsx'
 
 export const SuppliersPage = () => {
   const {
@@ -46,7 +46,9 @@ export const SuppliersPage = () => {
     });
   };
 
-  return (
+  return (    
+    <div>
+    <Navbar/>
     <div className="suppliers-page">
       <h2>Proveedores</h2>
       <div className="form-container">
@@ -103,6 +105,7 @@ export const SuppliersPage = () => {
         </table>
       )}
     </div>
+    </div>    
   );
 };
 

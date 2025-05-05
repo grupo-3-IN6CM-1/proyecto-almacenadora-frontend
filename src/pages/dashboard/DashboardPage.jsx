@@ -11,7 +11,7 @@ export const DashboardPage = () => {
   return (
     <div>
       <Navbar />
-        <div className="container">
+        <div className="welcome-container">
           <p className="welcome-heading">
             Bienvenido de vuelta, {username}, ¿qué quieres hacer hoy?
           </p>
@@ -79,7 +79,9 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Usuarios</Card.Title>
                 <Card.Text>Información sobre los usuarios del sistema</Card.Text>
-                <Button variant="primary">Ver Usuarios</Button>
+                <Button variant="primary"
+                onClick={() =>navigate("/users")}
+                >Ver Usuarios</Button>
               </Card.Body>
             </Card>
 

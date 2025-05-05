@@ -107,3 +107,14 @@ export const getStats = async () => {
       return { error: true, e };
     }
   };
+
+  export const getUsers = async () => {
+    try {
+      return await apiClient.get('/users');
+    } catch (e) {
+      return {
+        error: true,
+        e
+      };
+    }
+  };
