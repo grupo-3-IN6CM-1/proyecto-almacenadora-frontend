@@ -88,7 +88,10 @@ export const getCategories = async () => {
     try {
         return await apiClient.get('/categories');
     } catch (e) {
-        return { error: true, e };
+        return{
+            error: true,
+            e
+        }
     }
 };
 
@@ -96,7 +99,10 @@ export const addCategory = async (data) => {
     try {
         return await apiClient.post('/categories', data);
     } catch (e) {
-        return { error: true, e };
+        return{
+            error: true,
+            e
+        }
     }
 };
 
@@ -104,7 +110,10 @@ export const updateCategory = async (id, data) => {
     try {
         return await apiClient.put(`/categories/${id}`, data);
     } catch (e) {
-        return { error: true, e };
+        return{
+            error: true,
+            e
+        }
     }
 };
 
@@ -112,15 +121,21 @@ export const deleteCategory = async (id) => {
     try {
         return await apiClient.delete(`/categories/${id}`);
     } catch (e) {
-        return { error: true, e };
+        return{
+            error: true,
+            e
+        }
     }
 };
 
 export const getProducts = async () => {
     try {
-        return await apiClient.get('/product');  // Llamada al endpoint de productos
+        return await apiClient.get('/product'); 
     } catch (e) {
-        return { error: true, e };  // Captura y devuelve el error si ocurre
+        return { 
+            error: true,
+            e
+        };
     }
 };
 
@@ -128,7 +143,10 @@ export const addProduct = async (data) => {
     try {
         return await apiClient.post('/product', data);
     } catch (e) {
-        return { error: true, e };
+        return{
+            error: true,
+            e
+        }
     }
 };
 
@@ -136,7 +154,10 @@ export const updateProduct = async (id, data) => {
     try {
         return await apiClient.put(`/product/${id}`, data);
     } catch (e) {
-        return { error: true, e };
+        return{
+            error: true,
+            e
+        }
     }
 };
 
@@ -144,7 +165,10 @@ export const deleteProduct = async (id) => {
     try {
         return await apiClient.delete(`/product/${id}`);
     } catch (e) {
-        return { error: true, e };
+        return{
+            error: true,
+            e
+        }
     }
 };
 
@@ -152,7 +176,10 @@ export const searchProducts = async (filters) => {
     try {
         return await apiClient.get('/product/buscar', { params: filters });
     } catch (e) {
-        return { error: true, e };
+        return{
+            error: true,
+            e
+        }
     }
 };
 

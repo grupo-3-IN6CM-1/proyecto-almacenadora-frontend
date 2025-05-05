@@ -7,7 +7,7 @@ import './ProductsPage.css';
 export const ProductsPage = () => {
     const { products, isLoading, getProducts, searchProducts, addProduct, updateProduct, deleteProduct } = useProducts();
     const { categories, getCategories } = useCategories();
-    const [searchFilters, setSearchFilters] = useState({ category: '', name: '', entry_date: '' });
+    const [searchFilters, setSearchFilters] = useState({ category: '', name: '' }); // Quitamos entry_date
     const [formState, setFormState] = useState({
         name: '',
         description: '',
@@ -27,7 +27,7 @@ export const ProductsPage = () => {
     }, [getProducts, getCategories]);
 
     const handleSearch = async () => {
-        if (searchFilters.category || searchFilters.name || searchFilters.entry_date) {
+        if (searchFilters.category || searchFilters.name) {  // Modificamos la condición de búsqueda
             await searchProducts(searchFilters);  // Llama a la función de búsqueda
         } else {
             toast.error('Debe completar al menos un campo de búsqueda.');
@@ -71,8 +71,8 @@ export const ProductsPage = () => {
 
     return (
         <div className="products-page">
+            <Navbar/>
             <h2>Productos</h2>
-
             {/* Formulario de búsqueda */}
             <div className="search-container">
                 <input
@@ -92,11 +92,6 @@ export const ProductsPage = () => {
                         </option>
                     ))}
                 </select>
-                <input
-                    type="date"
-                    value={searchFilters.entry_date}
-                    onChange={(e) => setSearchFilters({ ...searchFilters, entry_date: e.target.value })}
-                />
                 <button onClick={handleSearch}>Buscar</button>
             </div>
 
