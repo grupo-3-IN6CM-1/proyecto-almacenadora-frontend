@@ -91,7 +91,11 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Reportes y estadísticas</Card.Title>
                 <Card.Text>Información sobre inventario de productos y estadísticas.</Card.Text>
-                <Button variant="primary">Ver Más</Button>
+                <Button variant="primary"
+                onClick={() => navigate("/stats")}
+                >
+                  Ver Más 
+                </Button>
               </Card.Body>
             </Card>
 
