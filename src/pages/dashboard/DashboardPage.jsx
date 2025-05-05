@@ -51,7 +51,11 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Proveedores</Card.Title>
                 <Card.Text>Información sobre proveedores</Card.Text>
-                <Button variant="primary">Ver Proveedores</Button>
+                <Button variant="primary"
+                onClick={() => navigate("/supplier")}
+                >
+                  Ver Proveedores 
+                </Button>
               </Card.Body>
             </Card>
 
@@ -87,12 +91,7 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Reportes y estadísticas</Card.Title>
                 <Card.Text>Información sobre inventario de productos y estadísticas.</Card.Text>
-                <Button
-                  variant="primary"
-                  onClick={() => navigate("/stats")}
-                >
-                  Ver Más
-              </Button>
+                <Button variant="primary">Ver Más</Button>
               </Card.Body>
             </Card>
 
