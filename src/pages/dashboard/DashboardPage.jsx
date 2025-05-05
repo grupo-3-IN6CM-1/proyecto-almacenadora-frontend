@@ -27,7 +27,12 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Productos</Card.Title>
                 <Card.Text>Información sobre productos</Card.Text>
-                <Button variant="primary">Ver Productos</Button>
+                <Button
+                  variant="primary"
+                  onClick={() => navigate("/product")} // Redirige a la ruta de productos
+                >
+                  Ver Productos
+                </Button>
               </Card.Body>
             </Card>
 

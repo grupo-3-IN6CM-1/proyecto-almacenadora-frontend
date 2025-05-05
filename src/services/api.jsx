@@ -116,6 +116,46 @@ export const deleteCategory = async (id) => {
     }
 };
 
+export const getProducts = async () => {
+    try {
+        return await apiClient.get('/product');  // Llamada al endpoint de productos
+    } catch (e) {
+        return { error: true, e };  // Captura y devuelve el error si ocurre
+    }
+};
+
+export const addProduct = async (data) => {
+    try {
+        return await apiClient.post('/product', data);
+    } catch (e) {
+        return { error: true, e };
+    }
+};
+
+export const updateProduct = async (id, data) => {
+    try {
+        return await apiClient.put(`/product/${id}`, data);
+    } catch (e) {
+        return { error: true, e };
+    }
+};
+
+export const deleteProduct = async (id) => {
+    try {
+        return await apiClient.delete(`/product/${id}`);
+    } catch (e) {
+        return { error: true, e };
+    }
+};
+
+export const searchProducts = async (filters) => {
+    try {
+        return await apiClient.get('/product/buscar', { params: filters });
+    } catch (e) {
+        return { error: true, e };
+    }
+};
+
 export const kardex = async (data) => {
     try {
         return await apiClient.get('/kardex', data)

@@ -3,6 +3,7 @@ import { Auth } from './pages/auth';
 import { Welcome } from './components/Welcome.jsx'
 import { KardexPage } from './pages/kardex/kardexPage.jsx';
 import { CategoriesPage } from './pages/categories/categoriesPage.jsx'
+import { ProductsPage } from './pages/products/productsPage.jsx'
 import {SuppliersPage} from './pages/supplier/suppliersPage.jsx';
 
 const routes = [
@@ -12,6 +13,7 @@ const routes = [
     {path: '/supplier', element: <SuppliersPage/>},
     {path: '/categories', element: <CategoriesPage />},
     {path: '/kardex', element: <KardexPage />},
+    {path: '/product', element: <ProductsPage />}
 
 ]
 
