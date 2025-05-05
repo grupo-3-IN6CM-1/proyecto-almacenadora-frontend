@@ -1,0 +1,98 @@
+.login-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #000;
+    background-image: url('src/assets/img/cactusjack.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 60px;
+  }
+  
+  .login-header-image {
+    width: 220px;
+    height: 220px;
+    background-image: url('src/assets/img/jack.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .login-card {
+    background-color: rgba(213, 192, 192, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    color: #fff;
+  }
+  
+  .login-card .form-label {
+    font-weight: 600;
+    color: #eee;
+  }
+  
+  .login-card .form-control {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+  }
+  
+  .login-card .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #764ba2;
+  }
+  
+  .login-card .btn-primary {
+    background-color: #667eea;
+    border-color: #667eea;
+  }
+  
+  .login-card .btn-outline-primary {
+    border-color: #764ba2;
+    color: #764ba2;
+  }
+  
+  .login-card .btn-outline-primary:hover {
+    background-color: #764ba2;
+    color: #fff;
+  }
+  
+  @media (max-width: 576px) {
+    .login-card {
+      padding: 30px 20px;
+    }
+  }
+
+ .login-btn {
+  background-color: #c84aff;
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #c84aff;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.login-btn:hover {
+  background-color: transparent;
+  color: #c84aff;
+}
+
+.register-btn {
+  background-color: transparent;
+  color: #c84aff;
+  font-weight: bold;
+  border: 2px solid #c84aff;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.register-btn:hover {
+  background-color: #c84aff;
+  color: #fff;
+}

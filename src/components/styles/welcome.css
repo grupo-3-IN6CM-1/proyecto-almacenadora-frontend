@@ -1,0 +1,61 @@
+.welcome-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../../assets/img/welcome.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.welcome-card {
+  text-align: center;
+  padding: 50px;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  max-width: 450px;
+  width: 100%;
+  animation: slideUp 1s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.welcome-heading {
+  font-size: 24px; /* Texto más grande */
+  margin-bottom: 30px; /* Espacio mayor entre el texto y los botones */
+}
+
+.welcome-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Más espacio entre los botones */
+}
+
+.btn {
+  padding: 12px 25px; /* Botones más grandes */
+  border: none;
+  border-radius: 5px;
+  font-size: 18px; /* Texto de botones más grande */
+  cursor: pointer;
+}
+
+.btn-login, .btn-register {
+  background-color: transparent;
+  color: white; /* Botones en blanco */
+  border: 2px solid white;
+}
+
+.btn-login:hover, .btn-register:hover {
+  background-color: white;
+  color: black;
+}

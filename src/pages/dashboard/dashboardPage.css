@@ -1,0 +1,41 @@
+.container {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.welcome-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.dashboard-body {
+  padding: 1rem;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.dashboard-card .btn {
+  background-color: #000000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dashboard-card .btn:hover {
+  background-color: #074a7c;
+}
