@@ -6,17 +6,16 @@ const apiClient = axios.create({
     timeout: 5000
 })
 
-// api.jsx interceptor
 apiClient.interceptors.request.use(config => {
     const stored = localStorage.getItem("user");
     if (stored) {
-      const { token } = JSON.parse(stored);
-      if (token) {
-        config.headers['x-token'] = token;
-      }
+        const { token } = JSON.parse(stored);
+        if (token) {
+            config.headers['x-token'] = token;
+        }
     }
     return config;
-  });
+});
   
 
 export const login = async(data) => {
@@ -85,6 +84,37 @@ export const deleteSupplier = async (id) => {
     }
 };
 
+export const getCategories = async () => {
+    try {
+        return await apiClient.get('/categories');
+    } catch (e) {
+        return { error: true, e };
+    }
+};
+
+export const addCategory = async (data) => {
+    try {
+        return await apiClient.post('/categories', data);
+    } catch (e) {
+        return { error: true, e };
+    }
+};
+
+export const updateCategory = async (id, data) => {
+    try {
+        return await apiClient.put(`/categories/${id}`, data);
+    } catch (e) {
+        return { error: true, e };
+    }
+};
+
+export const deleteCategory = async (id) => {
+    try {
+        return await apiClient.delete(`/categories/${id}`);
+    } catch (e) {
+        return { error: true, e };
+    }
+};
 
 export const kardex = async (data) => {
     try {

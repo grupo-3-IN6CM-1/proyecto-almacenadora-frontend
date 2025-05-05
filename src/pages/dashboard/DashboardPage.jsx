@@ -39,7 +39,11 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Categorías</Card.Title>
                 <Card.Text>Información sobre categorías</Card.Text>
-                <Button variant="primary">Ver Categorías</Button>
+                <Button variant="primary"
+                onClick={() => navigate("/categories")}
+                >
+                  Ver Más 
+                </Button>
               </Card.Body>
             </Card>
 

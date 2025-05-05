@@ -18,7 +18,6 @@ export const useLogin = () => {
       throw new Error("Login failed");
     }
 
-    // Tu backend envía en response.data.userDetails { username, token }
     const { userDetails } = response.data;
     const { username, token } = userDetails;
 
@@ -27,7 +26,6 @@ export const useLogin = () => {
       return;
     }
 
-    // ¡Aquí guardamos AMBOS en localStorage!
     localStorage.setItem("user", JSON.stringify({ username, token }));
 
     toast.success("Sesión iniciada correctamente");
