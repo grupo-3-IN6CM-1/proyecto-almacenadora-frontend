@@ -3,9 +3,13 @@ import axios from 'axios';
 import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
 import UserCard from '../../shared/hooks/useCard';
 import {Navbar} from '../../components/navbars/Navbar'
+import {useProtectedPage} from '../../shared/hooks/UseProtectedPage';  
+
 import './userPage.css';
 
 const UsersPage = () => {
+  useProtectedPage();  
+
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

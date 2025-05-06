@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useClients } from "../../shared/hooks";
 import { Navbar } from '../../components/navbars/Navbar';
 import toast from "react-hot-toast";
+import {useProtectedPage} from '../../shared/hooks/UseProtectedPage';  
 import './clientPage.css';
 
 export const ClientPage = () => {
+    useProtectedPage();  
+
     const { clients, isLoading, fetchClients, addNewClient, updateExistingClient, deleteExistingClient } = useClients();
     const [formState, setFormState] = useState({
         name: '',

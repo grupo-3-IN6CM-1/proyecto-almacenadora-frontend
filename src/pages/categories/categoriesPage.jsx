@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useCategories } from "../../shared/hooks";
 import { Navbar } from '../../components/navbars/Navbar';
 import toast from "react-hot-toast";
+import {useProtectedPage} from '../../shared/hooks/UseProtectedPage';  
+
 import './CategoriesPage.css';
 
 export const CategoriesPage = () => {
+    useProtectedPage();  
+
     const { categories, isLoading, getCategories, addCategory, updateCategory, deleteCategory } = useCategories();
     const [formState, setFormState] = useState({ name: '' });
     const [editingId, setEditingId] = useState(null);

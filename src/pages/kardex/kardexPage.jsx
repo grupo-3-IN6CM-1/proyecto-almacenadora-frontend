@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { useUserDetails } from '../../shared/hooks';
 import { Navbar } from '../../components/navbars/Navbar';
 import { validateStock } from '../../shared/validators/';
+import {useProtectedPage} from '../../shared/hooks/UseProtectedPage';  
 import '../kardex/kardexPage.css';
 
 export const KardexPage = () => {
+  useProtectedPage();  
   const { token: hookToken } = useUserDetails();
   const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
   const token = hookToken || storedUser.token || '';

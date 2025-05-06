@@ -3,8 +3,11 @@ import { useProducts, useCategories } from "../../shared/hooks";
 import { Navbar } from '../../components/navbars/Navbar';
 import toast from "react-hot-toast";
 import './ProductsPage.css';
+import {useProtectedPage} from '../../shared/hooks/UseProtectedPage';  
 
 export const ProductsPage = () => {
+    useProtectedPage();  
+
     const { products, isLoading, getProducts, searchProducts, addProduct, updateProduct, deleteProduct } = useProducts();
     const { categories, getCategories } = useCategories();
     const [searchFilters, setSearchFilters] = useState({ category: '', name: '' }); 

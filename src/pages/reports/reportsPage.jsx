@@ -7,9 +7,13 @@ import {
   CartesianGrid, XAxis, YAxis, Tooltip, Legend,
   LineChart, Line
 } from 'recharts'
+import {useProtectedPage} from '../../shared/hooks/UseProtectedPage';  
+
 import './reportsPage.css'
 
 export const VisualizarEstadisticas = () => {
+  useProtectedPage();  
+
   const { data, isLoading, error } = useFetchStats()
 
   if (isLoading) return <p>Cargando estadísticas…</p>

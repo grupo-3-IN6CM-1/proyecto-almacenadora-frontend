@@ -3,8 +3,12 @@ import { Navbar } from "../../components/navbars/Navbar";
 import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../dashboard/dashboardPage.css";
+import {useProtectedPage} from '../../shared/hooks/UseProtectedPage';  
+
 
 export const DashboardPage = () => {
+  useProtectedPage();  
+
   const { username } = useUserDetails();
   const navigate = useNavigate();
 

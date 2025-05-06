@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useSuppliers } from '../../shared/hooks';
 import { Navbar } from '../../components/navbars/Navbar';
 import toast from 'react-hot-toast';
+import {useProtectedPage} from '../../shared/hooks/UseProtectedPage';  
+
 import './SuppliersPage.css';
 
 export const SuppliersPage = () => {
+  useProtectedPage();  
+
   const {
     suppliers,
     isLoading,
