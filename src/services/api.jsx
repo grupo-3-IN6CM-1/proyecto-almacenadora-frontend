@@ -235,6 +235,12 @@ export const kardex = async (data) => {
     }
 }
 
+export const downloadProductsReport = () => {
+    return apiClient.get('/report/products-report', {
+      responseType: 'blob'
+    });
+  };
+
 export const getStats = async () => {
     // 1) Leer token igual que en KardexPage
     const { token = "" } = JSON.parse(localStorage.getItem('user') || '{}');
