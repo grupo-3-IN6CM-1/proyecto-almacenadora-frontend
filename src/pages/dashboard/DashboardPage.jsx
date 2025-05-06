@@ -27,7 +27,12 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Productos</Card.Title>
                 <Card.Text>Información sobre productos</Card.Text>
-                <Button variant="primary">Ver Productos</Button>
+                <Button
+                  variant="primary"
+                  onClick={() => navigate("/product")} // Redirige a la ruta de productos
+                >
+                  Ver Productos
+                </Button>
               </Card.Body>
             </Card>
 
@@ -39,7 +44,11 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Categorías</Card.Title>
                 <Card.Text>Información sobre categorías</Card.Text>
-                <Button variant="primary">Ver Categorías</Button>
+                <Button variant="primary"
+                onClick={() => navigate("/categories")}
+                >
+                  Ver Más 
+                </Button>
               </Card.Body>
             </Card>
 
@@ -67,7 +76,11 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Clientes</Card.Title>
                 <Card.Text>Información sobre clientes</Card.Text>
-                <Button variant="primary">Ver Clientes</Button>
+                <Button variant="primary"
+                onClick={() => navigate("/clientes")}
+                >
+                  Ver clientes 
+                </Button>
               </Card.Body>
             </Card>
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSuppliers } from '../../shared/hooks';
+import { Navbar } from '../../components/navbars/Navbar';
+import toast from 'react-hot-toast';
 import './SuppliersPage.css';
-import {Navbar} from '../../components/navbars/Navbar.jsx'
 
 export const SuppliersPage = () => {
   const {
@@ -15,6 +16,10 @@ export const SuppliersPage = () => {
 
   const [formState, setFormState] = useState({ name: '', contact: '', products: '' });
   const [editingId, setEditingId] = useState(null);
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user?._id;
+  const userRole = user?.role;
 
   useEffect(() => {
     getSuppliers();
@@ -38,18 +43,21 @@ export const SuppliersPage = () => {
   };
 
   const handleEdit = (supplier) => {
-    setEditingId(supplier._id);
-    setFormState({
-      name: supplier.name,
-      contact: supplier.contact,
-      products: supplier.products_supplied.join(',')
-    });
+    if (supplier.ownerId === userId || userRole === 'ADMIN') {
+      setEditingId(supplier._id);
+      setFormState({
+        name: supplier.name,
+        contact: supplier.contact,
+        products: supplier.products_supplied.join(',')
+      });
+    } else {
+      toast.error('No tienes permiso para editar este proveedor.');
+    }
   };
 
-  return (    
-    <div>
-    <Navbar/>
+  return (
     <div className="suppliers-page">
+      <Navbar />
       <h2>Proveedores</h2>
       <div className="form-container">
         <input
@@ -94,7 +102,9 @@ export const SuppliersPage = () => {
                 <td>{s.contact}</td>
                 <td>{s.products_supplied.length}</td>
                 <td>
-                  <button onClick={() => handleEdit(s)}>Editar</button>
+                  {(s.ownerId === userId || userRole === 'ADMIN') && (
+                    <button onClick={() => handleEdit(s)}>Editar</button>
+                  )}
                   <button onClick={() => deleteSupplier(s._id)}>Eliminar</button>
                 </td>
               </tr>
@@ -105,7 +115,6 @@ export const SuppliersPage = () => {
         </table>
       )}
     </div>
-    </div>    
   );
 };
 

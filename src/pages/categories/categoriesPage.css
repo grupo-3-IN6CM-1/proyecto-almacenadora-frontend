@@ -1,0 +1,80 @@
+.categories-page {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.categories-page h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.categories-page .form-container input,
+.categories-page .form-container select {
+  padding: 10px;
+  margin: 5px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.categories-page .form-container button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.categories-page .form-container button:hover {
+  background-color: #218838;
+}
+
+.categories-page .categories-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.categories-page .categories-table th,
+.categories-page .categories-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.categories-page .categories-table th {
+  background-color: #f8f9fa;
+}
+
+.categories-page .categories-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.categories-page .categories-table tr:hover {
+  background-color: #e9ecef;
+}
+
+.categories-page .categories-table button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.categories-page .categories-table button:hover {
+  background-color: #e0a800;
+}
+
+.categories-page .categories-table button:last-child {
+  background-color: #dc3545;
+}
+
+.categories-page .categories-table button:last-child:hover {
+  background-color: #c82333;
+}

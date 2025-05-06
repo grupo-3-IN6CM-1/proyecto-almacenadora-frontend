@@ -15,7 +15,6 @@ export const useSuppliers = () => {
     setIsLoading(true);
     try {
       const response = await getSuppliersRequest();
-      // Axios response: { data: { success, suppliers }, status, ... }
       const { success, suppliers: data } = response.data;
       if (success) {
         setSuppliers(data);
