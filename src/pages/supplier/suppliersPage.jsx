@@ -43,7 +43,6 @@ export const SuppliersPage = () => {
   };
 
   const handleEdit = (supplier) => {
-    // Verificar si el proveedor es del usuario actual o si el usuario es ADMIN
     if (supplier.ownerId === userId || userRole === 'ADMIN') {
       setEditingId(supplier._id);
       setFormState({

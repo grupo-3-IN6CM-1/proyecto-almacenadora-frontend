@@ -183,6 +183,50 @@ export const searchProducts = async (filters) => {
     }
 };
 
+export const getClients = async () => {
+    try {
+        return await apiClient.get('/clientes');
+    } catch (e) {
+        return {
+            error: true,
+            e
+        };
+    }
+};
+
+export const addClient = async (data) => {
+    try {
+        return await apiClient.post('/clientes', data);
+    } catch (e) {
+        return {
+            error: true,
+            e
+        };
+    }
+};
+
+export const updateClient = async (id, data) => {
+    try {
+        return await apiClient.put(`/clientes/${id}`, data);
+    } catch (e) {
+        return {
+            error: true,
+            e
+        };
+    }
+};
+
+export const deleteClient = async (id) => {
+    try {
+        return await apiClient.delete(`/clientes/${id}`);
+    } catch (e) {
+        return {
+            error: true,
+            e
+        };
+    }
+};
+
 export const kardex = async (data) => {
     try {
         return await apiClient.get('/kardex', data)

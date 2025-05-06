@@ -76,7 +76,11 @@ export const DashboardPage = () => {
               <Card.Body>
                 <Card.Title>Clientes</Card.Title>
                 <Card.Text>Información sobre clientes</Card.Text>
-                <Button variant="primary">Ver Clientes</Button>
+                <Button variant="primary"
+                onClick={() => navigate("/clientes")}
+                >
+                  Ver clientes 
+                </Button>
               </Card.Body>
             </Card>
 

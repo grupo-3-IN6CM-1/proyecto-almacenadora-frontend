@@ -7,7 +7,7 @@ import './ProductsPage.css';
 export const ProductsPage = () => {
     const { products, isLoading, getProducts, searchProducts, addProduct, updateProduct, deleteProduct } = useProducts();
     const { categories, getCategories } = useCategories();
-    const [searchFilters, setSearchFilters] = useState({ category: '', name: '' }); // Quitamos entry_date
+    const [searchFilters, setSearchFilters] = useState({ category: '', name: '' }); 
     const [formState, setFormState] = useState({
         name: '',
         description: '',
@@ -19,16 +19,16 @@ export const ProductsPage = () => {
         expiration_date: ''
     });
 
-    const [editingProductId, setEditingProductId] = useState(null);  // Guardar el id del producto que se está editando
+    const [editingProductId, setEditingProductId] = useState(null); 
 
     useEffect(() => {
-        getProducts(); // Al inicio carga todos los productos
-        getCategories(); // Cargar categorías
+        getProducts();
+        getCategories(); 
     }, [getProducts, getCategories]);
 
     const handleSearch = async () => {
-        if (searchFilters.category || searchFilters.name) {  // Modificamos la condición de búsqueda
-            await searchProducts(searchFilters);  // Llama a la función de búsqueda
+        if (searchFilters.category || searchFilters.name) {  
+            await searchProducts(searchFilters);  
         } else {
             toast.error('Debe completar al menos un campo de búsqueda.');
         }
@@ -42,31 +42,27 @@ export const ProductsPage = () => {
         const payload = { ...formState };
 
         if (editingProductId) {
-            // Si estamos editando un producto, se actualiza
             await updateProduct(editingProductId, payload);
-            setEditingProductId(null);  // Limpiar el id de edición después de actualizar
+            setEditingProductId(null);  
         } else {
-            // Si no estamos editando, se agrega un producto nuevo
             await addProduct(payload);
         }
 
-        // Limpiar el formulario después de guardar
         setFormState({ name: '', description: '', price: '', stock: '', category: '', supplier: '', entry_date: '', expiration_date: '' });
     };
 
     const handleEdit = (product) => {
-        // Cargar los valores del producto en el formulario para editar
         setFormState({
             name: product.name,
             description: product.description,
             price: product.price,
             stock: product.stock,
-            category: product.category._id,  // Asegúrate de que se pase el ID de la categoría
+            category: product.category._id,  
             supplier: product.supplier,
             entry_date: product.entry_date,
             expiration_date: product.expiration_date
         });
-        setEditingProductId(product._id);  // Guardar el ID del producto que se está editando
+        setEditingProductId(product._id);  
     };
 
     return (

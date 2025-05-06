@@ -9,11 +9,11 @@ export const useCategories = () => {
     const getCategories = useCallback(async () => {
         setIsLoading(true);
         try {
-            const response = await getCategoriesRequest(); // Aquí llamas a tu API
+            const response = await getCategoriesRequest(); 
             if (response.error) {
                 toast.error('Error al cargar categorías');
             } else {
-                setCategories(response.data.categories); // Asegúrate de que este campo sea el correcto
+                setCategories(response.data.categories);
             }
         } catch (error) {
             toast.error('Error al cargar categorías');
@@ -29,7 +29,6 @@ export const useCategories = () => {
         if (response.error) {
             toast.error('Error al agregar categoría');
         } else {
-            // Verifica que prev sea un array antes de usarlo
             setCategories((prev) => Array.isArray(prev) ? [...prev, response.data.category] : [response.data.category]);
             toast.success('Categoría agregada');
         }
